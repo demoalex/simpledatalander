@@ -45,40 +45,9 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    'nuxt-stencil',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  },
-
-  stencil: {
-    /**
-     * Required options
-     */
-
-    // Your library name, or the path to its root folder.
-    lib: 'stencils/deckdeckgo/highlight-code',
-
-    // The prefix to whitelist
-    prefix: 'deckgo-',
-
-    /**
-     * Options below are optional
-     */
-
-    // Stencil rendering options
-    renderOptions: {
-
-    },
-
-    // By default, it takes the lib name. e.g: bulmil/dist/hydrate
-    hydratePath: __dirname + '/stencils/deckdeckgo/highlight-code/hydrate',
-
-    // By default, it takes the lib name. e.g: bulmil/dist/loader
-    loaderPath: __dirname + '/stencils/deckdeckgo/highlight-code/dist/loader',
-
-    // By default, it takes the prefix. e.g: [/bm-\w*/]
-    ignoredElements: null,
   },
 }

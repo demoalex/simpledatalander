@@ -7,7 +7,11 @@
 <script>
 
 export default {
-  layout: 'empty',
+  head() {
+    return {
+      title: "SimpleData",
+    }
+  }
 }
 </script>
 

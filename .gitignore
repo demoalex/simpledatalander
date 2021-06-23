@@ -70,7 +70,6 @@ typings/
 
 # Nuxt generate
 dist
-!/stencils/deckdeckgo/highlight-code/dist
 
 
 # vuepress build output

@@ -7,7 +7,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "push-dir --dir=dist --branch=master --cleanup"
   },
   "dependencies": {
     "core-js": "^3.9.1",
@@ -21,6 +22,7 @@
     "autoprefixer": "^10.2.6",
     "jest": "^26.6.3",
     "postcss": "^8.3.5",
+    "push-dir": "^0.4.1",
     "tailwindcss": "^2.2.2",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.9.7"

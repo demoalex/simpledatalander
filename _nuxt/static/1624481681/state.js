@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Fsimpledatalander\u002F_nuxt\u002Fstatic\u002F1624481681",layout:"default",error:a,serverRendered:true,routePath:"\u002F",config:{_app:{basePath:"\u002Fsimpledatalander\u002F",assetsPath:"\u002Fsimpledatalander\u002F_nuxt\u002F",cdnURL:a}}}}(null));

@@ -11,8 +11,15 @@
     "deploy": "push-dir --dir=dist --branch=master --cleanup"
   },
   "dependencies": {
+    "@nuxtjs/auth-next": "^5.0.0-1624817847.21691f1",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/firebase": "^7.6.1",
     "core-js": "^3.9.1",
-    "nuxt": "^2.15.3"
+    "firebase": "^8.7.1",
+    "nuxt": "^2.15.3",
+    "vue-multianalytics": "^1.11.7",
+    "vuexfire": "^3.2.5"
   },
   "devDependencies": {
     "@deckdeckgo/highlight-code": "^3.3.1",

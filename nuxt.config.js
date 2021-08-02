@@ -1,14 +1,17 @@
+const pkg = require('./package')
+require('dotenv').config()
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   router: {
-    base: '/simpledatalander/'
+    base: '/'
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'prelaunch-lander',
+    title: 'Demo',
     htmlAttrs: {
       lang: 'en'
     },
@@ -31,6 +34,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/set-session-id', ssr: false },
+    { src: '~/plugins/vue-multianalytics', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -40,13 +45,77 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: process.env.FIREBASE_API_KEY,
+          authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+          projectId: process.env.FIREBASE_PROJECT_ID,
+          storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+          messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+          appId: process.env.FIREBASE_APP_ID,
+          measurementId: process.env.FIREBASE_MEASUREMENT_ID
+        },
+        services: {
+          auth: true, // Just as example. Can be any other service.
+          firestore: true,
+        }
+      }
+    ]
   ],
+
+  auth: {
+    strategies: {
+      local: {
+        scheme: 'refresh',
+        token: {
+          property: 'access',
+          // propertyName: 'access',
+          maxAge: 60 * 60,
+          // type: 'Bearer'
+        },
+        refreshToken: {
+          property: 'refresh',
+          data: 'refresh',
+          maxAge: 60 * 60 * 24 * 2
+        },
+        endpoints: {
+          login: {
+            url: '/api/v1/token/',
+            method: 'post',
+            propertyName: 'access',
+            altProperty: 'refresh'
+          },
+          refresh: {url: '/api/v1/refresh_token/', method: 'post'},
+          user: {url: '/api/v1/users/self/', method: 'get'},
+          logout: {},
+        },
+        user: {
+          property: false
+        }
+      }
+    },
+    redirect: false,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config, { isClient }) {
+      config.devtool = isClient ? 'eval-source-map' : 'inline-source-map'
+    }
   },
+
+  publicRuntimeConfig: {
+    apiUrl: process.env.API_URL,
+    eventTrackerUrl: process.env.EVENT_TRACKER_URL,
+    intercomAppId: process.env.INTERCOM_APP_ID
+  }
 }

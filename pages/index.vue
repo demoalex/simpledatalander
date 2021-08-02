@@ -11,6 +11,17 @@ export default {
     return {
       title: "SimpleData",
     }
+  },
+  mounted() {
+    let props = {
+      some: 'a',
+      thing: 1
+    }
+    this.$ma.trackEvent({category: 'Event', action: 'Index Action', label: 'Index Label', properties: props})
+    let i = 1
+    setInterval(() => {
+      this.$ma.trackEvent({category: 'Event', action: 'periodic', label: 'periodic Label', value: i++, properties: props})
+    }, 60000)
   }
 }
 </script>

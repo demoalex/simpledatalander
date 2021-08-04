@@ -4,14 +4,21 @@
       <Component :is="demo.main"/>
     </div>
     <div class="bg-blue-500 p-4 text-white">Architecture</div>
-    <div class="bg-blue-500 p-4 text-white">Logs</div>
+    <div>
+      <Logs :app="demo.app"/>
+    </div>
     <div class="bg-blue-500 p-4 text-white">Code</div>
     <div class="bg-blue-500 p-4 text-white">User</div>
   </div>
 
 </template>
 <script>
+import Logs from '~/components/demo/Logs.vue'
+
 export default {
+  components: {
+    Logs
+  },
   props: {
     demo: {
       type: Object,

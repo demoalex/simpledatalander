@@ -1,6 +1,6 @@
 <template>
   <div class="grid mb-4 pb-10 px-8 mx-4 rounded-3xl">
-    <Demo :demo="demo"/>
+    <Demo :demo="demo" />
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
   data () {
     return {
       demo: {
-        main: DemoChat
+        main: DemoChat,
+        app: 'intercom'
       }
     }
   }

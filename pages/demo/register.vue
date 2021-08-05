@@ -117,7 +117,7 @@ export default {
         });
         if (!this.showError) {
           await this.$auth.loginWith('local', {data: this.user})
-          this.$router.push('/demo/intercom');
+          this.$router.push('/demo/user');
         }
       } catch (err) {
         this.loading = false;

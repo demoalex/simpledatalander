@@ -1,6 +1,8 @@
 const initialState = {
   logs: {
-    intercom: []
+    intercom: [],
+    user: [],
+    stripe: []
   }
 }
 
@@ -26,6 +28,8 @@ export const actions = {
   fetchLogs({ commit }, app) {
     return this.$axios.$get(`${this.$config.apiUrl}/api/v1/logs/${app}/`).then(data => {
       commit(`${app}LogsSet`, data)
+    }).catch(error => {
+      console.log(error)
     })
   }
 }

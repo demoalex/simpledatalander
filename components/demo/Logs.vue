@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded shadow text-gray-900">
+  <div class="bg-white rounded-lg shadow text-gray-900 overflow-hidden">
     <div class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Log</div>
     <div class="px-5 py-3" v-for="log in logs"><b>{{log.dt}}</b>: {{log.log.message}}</div>
     <div class="px-5 py-3" v-if="!logs.length">{{ message }}</div>

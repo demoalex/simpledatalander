@@ -116,6 +116,7 @@ export default {
   publicRuntimeConfig: {
     apiUrl: process.env.API_URL,
     eventTrackerUrl: process.env.EVENT_TRACKER_URL,
-    intercomAppId: process.env.INTERCOM_APP_ID
+    intercomAppId: process.env.INTERCOM_APP_ID,
+    ipApiKey: process.env.IP_API_KEY
   }
 }

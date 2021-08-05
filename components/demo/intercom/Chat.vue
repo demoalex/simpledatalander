@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="col-span-2">
     <client-only>
       <DemoIntercomOnPage />
     </client-only>

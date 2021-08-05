@@ -7,22 +7,31 @@
 <script>
 import Demo from '~/components/demo/Demo.vue'
 import DemoChat from '~/components/demo/intercom/Chat.vue'
+import User from '~/components/demo/User.vue'
 
 export default {
   components: {
-    Demo, DemoChat
+    Demo, DemoChat, User
   },
   head() {
     return {
-      title: "SimpleData - Demo - Intercom",
+      title: "SimpleData - Demo",
     }
   },
   layout: 'demo',
   data () {
     return {
-      demo: {
-        main: DemoChat,
-        app: 'intercom'
+      demoComponents: {
+        intercom: DemoChat,
+        user: User
+      },
+    }
+  },
+  computed: {
+    demo() {
+      return {
+        main: this.demoComponents[this.$route.params.app],
+        app: this.$route.params.app
       }
     }
   }

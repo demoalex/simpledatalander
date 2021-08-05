@@ -1,23 +1,24 @@
 <template>
   <div class="grid grid-cols-2 gap-4">
-    <div class="col-span-2">
-      <Component :is="demo.main"/>
-    </div>
+    <Component :is="demo.main"/>
     <div class="bg-blue-500 p-4 text-white">Architecture</div>
     <div>
       <Logs :app="demo.app"/>
     </div>
     <div class="bg-blue-500 p-4 text-white">Code</div>
-    <div class="bg-blue-500 p-4 text-white">User</div>
+    <div>
+      <UserStatus />
+    </div>
   </div>
 
 </template>
 <script>
 import Logs from '~/components/demo/Logs.vue'
+import UserStatus from '~/components/demo/UserStatus.vue'
 
 export default {
   components: {
-    Logs
+    Logs, UserStatus
   },
   props: {
     demo: {

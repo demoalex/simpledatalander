@@ -15,6 +15,11 @@
 
 <script>
 export default {
+  data() {
+    return{
+      url: process.browser ? window.location.href : "https://example.com/success"
+    }
+  },
   mounted() {
     if(this.$stripe) {
       const checkoutButton = document.getElementById('checkout-button-price_1JEHYeJ1cXBanLUjFBmHGZ5c');
@@ -33,8 +38,8 @@ export default {
            * Instead use one of the strategies described in
            * https://stripe.com/docs/payments/checkout/fulfill-orders
            */
-          successUrl: 'https://example.com/success',
-          cancelUrl: 'https://example.com/canceled',
+          successUrl: this.url,
+          cancelUrl: this.url,
         })
           .then(function (result) {
             if (result.error) {
@@ -48,7 +53,6 @@ export default {
           });
       });
     }
-
   }
 }
 </script>

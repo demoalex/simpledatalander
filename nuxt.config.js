@@ -118,6 +118,9 @@ export default {
     apiUrl: process.env.API_URL,
     eventTrackerUrl: process.env.EVENT_TRACKER_URL,
     intercomAppId: process.env.INTERCOM_APP_ID,
-    ipApiKey: process.env.IP_API_KEY
+    ipApiKey: process.env.IP_API_KEY,
+    stripe: {
+      publishableKey: process.env.STRIPE_PUBLIC_KEY,
+    }
   }
 }

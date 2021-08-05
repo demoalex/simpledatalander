@@ -51,6 +51,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-stripe-module',
     '@nuxtjs/axios',
     [
       '@nuxtjs/firebase',

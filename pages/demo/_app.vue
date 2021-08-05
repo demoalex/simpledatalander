@@ -8,10 +8,11 @@
 import Demo from '~/components/demo/Demo.vue'
 import DemoChat from '~/components/demo/intercom/Chat.vue'
 import User from '~/components/demo/User.vue'
+import Stripe from '~/components/demo/Stripe.vue'
 
 export default {
   components: {
-    Demo, DemoChat, User
+    Demo, DemoChat, User, Stripe
   },
   head() {
     return {
@@ -23,7 +24,8 @@ export default {
     return {
       demoComponents: {
         intercom: DemoChat,
-        user: User
+        user: User,
+        stripe: Stripe
       },
     }
   },

@@ -2,7 +2,8 @@ const initialState = {
   logs: {
     intercom: [],
     user: [],
-    stripe: []
+    stripe: [],
+    code: []
   }
 }
 

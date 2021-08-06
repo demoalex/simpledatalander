@@ -6,13 +6,14 @@
 
 <script>
 import Demo from '~/components/demo/Demo.vue'
-import DemoChat from '~/components/demo/intercom/Chat.vue'
+import Intercom from '~/components/demo/Intercom.vue'
 import User from '~/components/demo/User.vue'
 import Stripe from '~/components/demo/Stripe.vue'
+import Code from '~/components/demo/Code.vue'
 
 export default {
   components: {
-    Demo, DemoChat, User, Stripe
+    Demo, Intercom, User, Stripe, Code
   },
   head() {
     return {
@@ -23,9 +24,10 @@ export default {
   data () {
     return {
       demoComponents: {
-        intercom: DemoChat,
+        intercom: Intercom,
         user: User,
-        stripe: Stripe
+        stripe: Stripe,
+        code: Code
       },
     }
   },

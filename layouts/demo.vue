@@ -87,6 +87,7 @@ export default {
         {name: 'User', to: '/demo/user'},
         {name: 'Intercom', to: '/demo/intercom'},
         {name: 'Stripe', to: '/demo/stripe'},
+        {name: 'Code Sandbox', to: '/demo/code'},
       ]
     }
   },

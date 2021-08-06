@@ -1,9 +1,5 @@
 <template>
   <div class="col-span-2">
-    <client-only>
-      <DemoIntercomOnPage />
-    </client-only>
-
     <div class="py-8">
       <div>
         <h2 class="text-2xl font-semibold leading-tight">Messages</h2>
@@ -24,6 +20,9 @@ export default {
     return {
       type: "messages"
     }
+  },
+  mounted() {
+    this.$intercom('boot')
   }
 }
 </script>

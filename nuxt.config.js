@@ -51,6 +51,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-intercom',
     'nuxt-stripe-module',
     '@nuxtjs/axios',
     [
@@ -114,6 +115,10 @@ export default {
     }
   },
 
+  intercom: {
+    appId: process.env.INTERCOM_APP_ID,
+  },
+
   publicRuntimeConfig: {
     apiUrl: process.env.API_URL,
     eventTrackerUrl: process.env.EVENT_TRACKER_URL,
@@ -121,6 +126,7 @@ export default {
     ipApiKey: process.env.IP_API_KEY,
     stripe: {
       publishableKey: process.env.STRIPE_PUBLIC_KEY,
-    }
+    },
+    codeSandboxApiUrl: process.env.CODE_SANDBOX_API_URL
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="col-span-2">
     <button
       style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em;cursor:pointer"
       id="checkout-button-price_1JEHYeJ1cXBanLUjFBmHGZ5c"
@@ -9,15 +9,22 @@
       Checkout
     </button>
     <div id="error-message"></div>
+    <Table :type="type" />
   </div>
 
 </template>
 
 <script>
+import Table from '~/components/demo/Table.vue'
+
 export default {
+  components: {
+    Table
+  },
   data() {
     return{
-      url: process.browser ? window.location.href : "https://example.com/success"
+      url: process.browser ? window.location.href : "https://example.com/success",
+      type: 'purchases'
     }
   },
   mounted() {

@@ -1,10 +1,11 @@
 <template>
   <div class="bg-white rounded-lg shadow text-gray-900 overflow-hidden col-span-2">
     <div class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Code Sandbox</div>
-    <client-only>
       <div class="flex p-2">
         <div>
-          <MonacoEditor class="editor" v-model="code" language="python"/>
+          <client-only>
+            <MonacoEditor class="editor" v-model="code" language="python"/>
+          </client-only>
           <button
               :disabled="loading"
               @click="run"
@@ -17,7 +18,6 @@
           <textarea rows="15" readonly class="resize-none focus:outline-none w-full" v-model="output"></textarea>
         </div>
       </div>
-    </client-only>
   </div>
 </template>
 

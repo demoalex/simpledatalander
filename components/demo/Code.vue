@@ -2,15 +2,20 @@
   <div class="bg-white rounded-lg shadow text-gray-900 overflow-hidden col-span-2">
     <div class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Code Sandbox</div>
     <client-only>
-      <div>
-        <MonacoEditor class="editor" v-model="code" language="python"/>
-        <button
-            @click="run"
-            type="button"
-            class="h-12 px-6 m-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800 focus:outline-none"
-                >Run
-        </button>
-        <div>{{ output }}</div>
+      <div class="flex p-2">
+        <div>
+          <MonacoEditor class="editor" v-model="code" language="python"/>
+          <button
+              :disabled="loading"
+              @click="run"
+              type="button"
+              class="h-12 px-6 m-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800 focus:outline-none"
+                  >Run
+          </button>
+        </div>
+        <div class="m-l-4 p-2 w-full">Output: <br>
+          <textarea rows="15" readonly class="resize-none focus:outline-none w-full" v-model="output"></textarea>
+        </div>
       </div>
     </client-only>
   </div>
@@ -26,16 +31,19 @@ export default {
   data() {
     return {
       code: 'print("Hello World")',
-      output: ''
+      output: '',
+      loading: false
     }
   },
   methods: {
     run() {
+      this.loading = true
       this.$axios.$post(`${this.$config.codeSandboxApiUrl}/run-snippet`, {snippet: this.code}).then(data => {
-        console.log(data)
-        this.output = this.data.output
+        this.output = data.output
       }).catch(error => {
-        console.log(error)
+        console.error(error)
+      }).finally(() => {
+        this.loading = false
       })
     }
   }

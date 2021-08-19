@@ -107,7 +107,9 @@
               </td>
             </tr>
             <tr v-if="row.show" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" colspan="5">{{ row.details }}</td>
+              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" colspan="5">
+                <vue-json-pretty :data="row.details"> </vue-json-pretty>
+              </td>
             </tr>
           </template>
           </tbody>
@@ -137,6 +139,8 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
 
 export default {
   name: 'Table',
@@ -145,6 +149,9 @@ export default {
       type: String,
       required: true,
     }
+  },
+  components: {
+    VueJsonPretty,
   },
   data () {
     return {

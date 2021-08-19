@@ -42,6 +42,11 @@ export default {
       lang: process.browser ? navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language : ''
     }
   },
+  computed: {
+    email() {
+      return this.$auth.user && this.$auth.user.email || null
+    }
+  },
   mounted() {
     this.user = [
       {property: "Status", value: this.$auth.user && this.$auth.user.email ? 'Authorized': 'Anonymous'},

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-screen-3xl">
     <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
       <nuxt-link class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" to="/demo/intercom">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -26,8 +26,10 @@
           </li>
         </template>
       </ul>
-      <nuxt-link class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" to="/demo/login">Sign In</nuxt-link>
-      <nuxt-link class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" to="/demo/register">Sign up</nuxt-link>
+      <nuxt-link v-if="!email" class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" to="/demo/login">Sign In</nuxt-link>
+      <nuxt-link v-if="!email" class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" to="/demo/register">Sign up</nuxt-link>
+      <div v-if="email" class="hidden lg:inline-block py-2 px-6 lg:ml-auto text-sm rounded-xl transition duration-200">{{ email }}</div>
+      <button v-if="email" @click="logout" type="button" class="hidden lg:inline-block lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200">Logout</button>
     </nav>
     <div class="navbar-menu relative z-50 hidden">
       <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25" @click="toggleMenu"></div>
@@ -52,13 +54,15 @@
               <nuxt-link class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" :to="item.to">
                 {{ item.name }}</nuxt-link>
             </li>
-            </li>
           </ul>
         </div>
         <div class="mt-auto">
-          <div class="pt-6">
+          <div class="pt-6" v-if="!email">
             <nuxt-link class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" to="/demo/login">Sign in</nuxt-link>
-            <nuxt-link class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" to="/demo/register">Sign Up</nuxt-link>
+            <nuxt-link class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700 rounded-xl" to="/demo/register">Sign Up</nuxt-link>
+          </div>
+          <div class="pt-6" v-if="email">
+            <button @click="logout" type="button" class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl">Logout</button>
           </div>
           <p class="my-4 text-xs text-center text-gray-400">
             <span>Copyright © 2021</span>
@@ -77,6 +81,10 @@
     color: rgba(37, 99, 235, 1);
     font-weight: 700;
   }
+  .max-w-screen-3xl {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
 </style>
 
 <script>
@@ -91,12 +99,22 @@ export default {
       ]
     }
   },
+  computed: {
+    email() {
+      return this.$auth.user && this.$auth.user.email || null
+    }
+  },
   methods: {
     toggleMenu() {
       const menu = document.querySelectorAll('.navbar-menu');
       for (let j = 0; j < menu.length; j++) {
         menu[j].classList.toggle('hidden');
       }
+    },
+    logout() {
+      this.$auth.logout().catch(() => {}).finally(() => {
+        if (process.browser) location.reload()
+      });
     }
   },
   mounted() {

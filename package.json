@@ -20,6 +20,7 @@
     "nuxt": "^2.15.3",
     "nuxt-intercom": "^1.0.8",
     "nuxt-stripe-module": "^3.2.0",
+    "vue-json-pretty": "^1.8.1",
     "vue-monaco": "^1.2.2",
     "vue-multianalytics": "^1.11.7",
     "vuexfire": "^3.2.5"

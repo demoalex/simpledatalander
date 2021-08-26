@@ -1,20 +1,24 @@
 <template>
-  <div class="bg-white rounded-lg shadow text-gray-900 overflow-hidden col-span-2">
-    <div class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Code Sandbox</div>
-      <div class="flex p-2">
-        <div>
-          <client-only>
-            <MonacoEditor class="editor" v-model="code" language="python"/>
-          </client-only>
+  <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow col-span-2">
+
+
+    <div class="bg-white px-4 py-3 border-b border-gray-200 sm:px-6 flex flex-row justify-between items-center">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Code Sandbox</h3>
+
           <button
               :disabled="loading"
               @click="run"
               type="button"
-              class="h-12 px-6 m-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800 focus:outline-none"
-                  >Run
+              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-out duration-700 ml-4">
+              Run
           </button>
-        </div>
-        <div class="m-l-4 p-2 w-full">Output: <br>
+      </div>
+      <div class="grid grid-cols-1 gap-5 lg:grid-cols-2 p-6">
+  
+        <client-only>
+          <MonacoEditor class="editor" v-model="code" language="python"/>
+        </client-only>
+        <div class="m-l-4 p-2">Output: <br>
           <textarea rows="15" readonly class="resize-none focus:outline-none w-full" v-model="output"></textarea>
         </div>
       </div>
@@ -50,10 +54,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .editor {
   height: 400px;
-  width: 600px;
   border: 1px solid #ccc;
 }
 </style>

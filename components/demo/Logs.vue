@@ -1,15 +1,19 @@
 <template>
-  <div class="bg-white rounded-lg shadow text-gray-900 overflow-hidden">
-    <div class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Log</div>
-    <div class="px-5 py-3" v-for="log in logs"><b>{{log.dt}}</b>: {{log.log.message}}</div>
-    <div class="px-5 py-3" v-if="!logs.length">{{ message }}</div>
-    <button
+  <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow col-span-2 lg:col-span-1">
+
+    <div class="bg-white px-4 py-3 border-b border-gray-200 sm:px-6 flex flex-row justify-between items-center">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Log</h3>
+
+      <button
         @click.prevent="load" :disabled="loading"
         type="button"
-        class="p-3 mt-10 mb-5 ml-5 text-center focus:outline-none
-                text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold rounded">
-      Load log for last 15 minutes
+        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Load log for last 15 minutes
     </button>
+    </div>
+    <div class="px-5 py-3" v-for="log in logs"><b>{{log.dt}}</b>: {{log.log.message}}</div>
+    <div class="px-5 py-3" v-if="!logs.length">{{ message }}</div>
+    
   </div>
 </template>
 

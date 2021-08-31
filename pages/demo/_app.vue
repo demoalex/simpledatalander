@@ -10,10 +10,12 @@ import Intercom from '~/components/demo/Intercom.vue'
 import User from '~/components/demo/User.vue'
 import Stripe from '~/components/demo/Stripe.vue'
 import Code from '~/components/demo/Code.vue'
+import EventsChart from '~/components/demo/EventsChart.vue'
+import EventsTable from '~/components/demo/EventsTable.vue'
 
 export default {
   components: {
-    Demo, Intercom, User, Stripe, Code
+    Demo, Intercom, User, Stripe, Code, EventsChart, EventsTable
   },
   head() {
     return {
@@ -24,17 +26,18 @@ export default {
   data () {
     return {
       demoComponents: {
-        intercom: Intercom,
-        user: User,
-        stripe: Stripe,
-        code: Code
+        intercom: [Intercom],
+        user: [User],
+        stripe: [Stripe],
+        code: [Code],
+        events: [EventsChart, EventsTable]
       },
     }
   },
   computed: {
     demo() {
       return {
-        main: this.demoComponents[this.$route.params.app],
+        mainComponents: this.demoComponents[this.$route.params.app],
         app: this.$route.params.app
       }
     }

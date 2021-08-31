@@ -174,7 +174,7 @@ import VueJsonPretty from 'vue-json-pretty';
 import 'vue-json-pretty/lib/styles.css';
 
 export default {
-  name: 'Table',
+  name: 'FirebaseTable',
   props: {
     type: {
       type: String,
@@ -191,7 +191,7 @@ export default {
       lastVisible: null,
       firstVisible: null,
       limits: [5, 10, 20, 50, 100],
-      limit: 5,
+      limit: 10,
       email: '',
       functions: {
         messages: this.fetchMessages,

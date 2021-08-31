@@ -37,6 +37,7 @@ export default {
   plugins: [
     { src: '~/plugins/set-session-id', ssr: false },
     { src: '~/plugins/vue-multianalytics', ssr: false },
+    { src: '~/plugins/vue-chart-kick.js', ssr: false },
     '@/plugins/vue-json-pretty',
   ],
 
@@ -129,6 +130,8 @@ export default {
     stripe: {
       publishableKey: process.env.STRIPE_PUBLIC_KEY,
     },
-    codeSandboxApiUrl: process.env.CODE_SANDBOX_API_URL
+    codeSandboxApiUrl: process.env.CODE_SANDBOX_API_URL,
+    cubeJsApiUrl: process.env.CUBEJS_API_URL,
+    cubeJsToken: process.env.CUBEJS_TOKEN
   }
 }

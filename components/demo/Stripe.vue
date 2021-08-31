@@ -37,6 +37,7 @@ export default {
   },
   methods: {
     checkout(button) {
+      this.$ma.trackEvent({action: `Stripe Button $${button.price} Click`})
       this.$stripe.redirectToCheckout({
         lineItems: [{price: button.id, quantity: 1}],
         mode: button.mode,

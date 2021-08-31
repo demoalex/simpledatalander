@@ -3,7 +3,8 @@ const initialState = {
     intercom: [],
     user: [],
     stripe: [],
-    code: []
+    code: [],
+    events: []
   }
 }
 

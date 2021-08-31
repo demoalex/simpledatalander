@@ -4,7 +4,6 @@
 
     <div class="bg-white px-4 py-3 border-b border-gray-200 sm:px-6 flex flex-row justify-between items-center">
       <h3 class="text-lg leading-6 font-medium text-gray-900">Code Sandbox</h3>
-
           <button
               :disabled="loading"
               @click="run"
@@ -41,6 +40,7 @@ export default {
   },
   methods: {
     run() {
+      this.$ma.trackEvent({action: `Code Sandbox Run Click`})
       this.loading = true
       this.$axios.$post(`${this.$config.codeSandboxApiUrl}/run-snippet`, {snippet: this.code}).then(data => {
         this.output = data.output

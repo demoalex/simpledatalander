@@ -111,6 +111,10 @@ export default {
     redirect: false,
   },
 
+  generate: {
+    routes: ['/demo/intercom', '/demo/user', '/demo/stripe', '/demo/code',  '/demo/events']
+  }
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extend(config, { isClient }) {

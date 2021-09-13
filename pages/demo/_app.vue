@@ -36,6 +36,9 @@ export default {
   },
   computed: {
     demo() {
+      if (!this.demoComponents.hasOwnProperty(this.$route.params.app))
+        this.$nuxt.error({ statusCode: 404, message: 'No such Demo yet...' })
+
       return {
         mainComponents: this.demoComponents[this.$route.params.app],
         app: this.$route.params.app

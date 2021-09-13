@@ -1,6 +1,3 @@
-const pkg = require('./package')
-require('dotenv').config()
-
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -35,9 +32,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/set-session-id', ssr: false },
-    { src: '~/plugins/vue-multianalytics', ssr: false },
-    { src: '~/plugins/vue-chart-kick.js', ssr: false },
+    { src: '~/plugins/set-session-id', mode: 'client' },
+    { src: '~/plugins/vue-multianalytics', mode: 'client' },
+    { src: '~/plugins/vue-chart-kick.js', mode: 'client' },
     '@/plugins/vue-json-pretty',
   ],
 

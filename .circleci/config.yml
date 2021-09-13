@@ -5,6 +5,7 @@ executors:
   with-chrome:
     docker:
       - image: 'cypress/browsers:node14.16.0-chrome90-ff88'
+    resource_class: small
 workflows:
   build:
     jobs:

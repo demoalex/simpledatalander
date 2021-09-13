@@ -6,7 +6,20 @@ executors:
     docker:
       - image: 'cypress/browsers:node14.16.0-chrome90-ff88'
 workflows:
-  build:
+  test:
+    jobs:
+      - cypress/run:
+          yarn: true
+          executor: with-chrome
+          browser: chrome
+  schedule:
+    triggers:
+      - schedule:
+          cron: "0 0 7/3 ? * * *"
+          filters:
+            branches:
+              only:
+                - circleci
     jobs:
       - cypress/run:
           yarn: true

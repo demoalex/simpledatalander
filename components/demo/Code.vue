@@ -8,12 +8,13 @@
               :disabled="loading"
               @click="run"
               type="button"
-              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-out duration-700 ml-4">
+              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-out duration-700 ml-4"
+              data-test="code-sandbox-run">
               Run
           </button>
       </div>
       <div class="grid grid-cols-1 gap-5 lg:grid-cols-2 p-6">
-  
+
         <client-only>
           <MonacoEditor class="editor" v-model="code" language="python"/>
         </client-only>

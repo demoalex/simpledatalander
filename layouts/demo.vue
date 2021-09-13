@@ -89,7 +89,10 @@
           <div class="mt-5 flex-1 flex flex-col">
             <nav class="flex-1 px-2 space-y-1">
               <template v-for="(item, $index) in menu">
-                <nuxt-link @click.native="menuItemClick(item)" class="text-indigo-100 hover:bg-indigo-600 group flex items-center px-4 py-2 text-sm font-medium rounded-md ransition ease-out duration-700" :to="item.to">
+                <nuxt-link @click.native="menuItemClick(item)"
+                           class="text-indigo-100 hover:bg-indigo-600 group flex items-center px-4 py-2 text-sm font-medium rounded-md ransition ease-out duration-700"
+                           :to="item.to"
+                           data-test="nav-menu-item">
                   {{ item.name }}
                 </nuxt-link>
               </template>
@@ -114,7 +117,7 @@
           <div class="ml-4 flex items-center md:ml-0">
             <nuxt-link v-if="!email" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-out duration-700" to="/demo/login">Sign In</nuxt-link>
             <nuxt-link v-if="!email" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-out duration-700 ml-4" to="/demo/register">Sign up</nuxt-link>
-  
+
             <div class="ml-3 relative" v-if="email">
             <div>
               <button type="button" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true" @click="dropdown = !dropdown">

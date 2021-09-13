@@ -3,11 +3,11 @@
 
 
     <button v-for="(button, $index) in buttons" :key="$index"
-      class="checkout inline-flex items-center px-4 py-2 mb-4 mr-4 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-out duration-700"
-      role="link"
-      type="button"
-      @click="checkout(button)"
-    >
+            class="checkout inline-flex items-center px-4 py-2 mb-4 mr-4 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition ease-out duration-700"
+            role="link"
+            type="button"
+            @click="checkout(button)"
+            data-test="stripe-checkout-button">
       Checkout {{ button.type }} ${{ button.price }}
     </button>
     <div id="error-message"></div>
